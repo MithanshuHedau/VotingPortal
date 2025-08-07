@@ -28,5 +28,6 @@ Admin candiates :
   /candiates/:candidateId PUT : update the Existing Candidtes 
   /candiates/:candidateId DLEETE : Delete The Candidate from the List 
 
-  
+  sui@gmail.com
+  password@123
 

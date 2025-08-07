@@ -51,6 +51,11 @@ export const authAPI = {
       return handleResponse(response);
     } catch (error) {
       console.error("Signup error:", error);
+      if (error.name === "TypeError" && error.message.includes("fetch")) {
+        throw new Error(
+          "Network error: Unable to connect to server. Please check your internet connection."
+        );
+      }
       throw error;
     }
   },
@@ -67,6 +72,11 @@ export const authAPI = {
       return handleResponse(response);
     } catch (error) {
       console.error("Login error:", error);
+      if (error.name === "TypeError" && error.message.includes("fetch")) {
+        throw new Error(
+          "Network error: Unable to connect to server. Please check your internet connection."
+        );
+      }
       throw error;
     }
   },

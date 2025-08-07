@@ -39,14 +39,6 @@ app.use(
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
-// Handle preflight requests
-app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  res.sendStatus(200);
-});
-
 //Import Routes
 const { jwtAuthMiddleWare } = require("./jwt");
 const userRoutes = require("./routes/userRoutes");
