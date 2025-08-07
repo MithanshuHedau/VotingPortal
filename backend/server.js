@@ -14,7 +14,7 @@ const allowedOrigins = [
   // Add your deployed frontend URLs here when you deploy
   // "https://your-app-name.vercel.app",
   // "https://your-app-name.netlify.app",
-  "https://voting-portal-six.vercel.app/",
+  "https://voting-portal-six.vercel.app",
 ];
 
 app.use(
@@ -26,6 +26,7 @@ app.use(
       if (allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
+        console.log("CORS blocked origin:", origin);
         callback(new Error("Not allowed by CORS"));
       }
     },
@@ -37,6 +38,14 @@ app.use(
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
+
+// Handle preflight requests
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.sendStatus(200);
+});
 
 //Import Routes
 const { jwtAuthMiddleWare } = require("./jwt");
