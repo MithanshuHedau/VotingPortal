@@ -14,7 +14,7 @@ const allowedOrigins = [
   // Add your deployed frontend URLs here when you deploy
   // "https://your-app-name.vercel.app",
   // "https://your-app-name.netlify.app",
-  "https://voting-portal-six.vercel.app",
+  "https://electorportal.vercel.app",
 ];
 
 app.use(
